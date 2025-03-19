@@ -17,9 +17,10 @@ const HomeStack = () => {
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Home" component={HomeScreen}/>
             <Stack.Screen name="Details" component={DetailsScreen}
-                          options={{title: 'Event Details'}}/>
+                          options={{title: 'Event Details'}}/> 
         </Stack.Navigator>
     );
+    //Test Change
 };
 
 const MainTabNavigator = () => {
