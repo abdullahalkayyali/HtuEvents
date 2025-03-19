@@ -8,6 +8,8 @@ import SplashScreen from "./components/SplashScreen";
 import LoginScreen from "./components/LoginScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
+import * as eva from "@eva-design/eva";
+import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -62,8 +64,10 @@ const AppNavigator = () => {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AppNavigator />
-    </NavigationContainer>
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </ApplicationProvider>
   );
 }

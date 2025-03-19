@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
+import { StyleSheet, View, Alert, Image } from "react-native";
+import { Input, Text, Button } from "@ui-kitten/components";
 
 const LoginScreen = ({ navigation }) => {
   const validUsers = [
@@ -17,20 +18,24 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    validUsers.forEach((user) => {
-      if (email === user.email && password === user.password) {
-        navigation.replace("MainApp");
-      } else {
-        Alert.alert("Login Failed", "Your email or password is incorrect!");
-      }
-    });
+    const user = validUsers.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (user) {
+      navigation.replace("MainApp");
+    } else {
+      Alert.alert("Invalid email or password. Please try again.");
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title} category="h1">
+        Login
+      </Text>
 
-      <TextInput
+      <Input
         style={styles.input}
         placeholder="Email"
         keyboardType="email-address"
@@ -39,7 +44,7 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={setEmail}
       />
 
-      <TextInput
+      <Input
         style={styles.input}
         placeholder="Password"
         secureTextEntry
@@ -48,8 +53,11 @@ const LoginScreen = ({ navigation }) => {
       />
 
       <View style={styles.buttonContainer}>
-        <Button title="Log In" onPress={handleLogin} />
+        <Button onPress={handleLogin} status="danger" style={styles.button}>
+          Go
+        </Button>
       </View>
+      <Image source={require("../images/HTU.png")} style={styles.image}></Image>
     </View>
   );
 };
@@ -63,21 +71,24 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 40,
   },
   input: {
-    width: "80%",
-    padding: 10,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
+    marginBottom: 20,
+    marginHorizontal: 15,
+  },
+  button: {
+    backgroundColor: "#EA383E",
   },
   buttonContainer: {
     width: "80%",
     marginTop: 10,
+  },
+  image: {
+    position: "absolute",
+    bottom: 50,
+    width: 70,
+    height: 70,
   },
 });
 
