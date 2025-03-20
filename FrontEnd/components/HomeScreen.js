@@ -9,14 +9,6 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <ScrollView style={styles.container}>
-            <Button
-                onPress={() => navigation.navigate("Add")}
-                status="success"
-                style={{ marginTop: 40 }}
-            >
-                Add Event
-            </Button>
-
             <View style={styles.container}>
                 <Text category="h1" style={styles.header}>
                     Volunteering
