@@ -3,17 +3,22 @@ import { View, Image, StyleSheet } from "react-native";
 import { Card, Text, Button } from "@ui-kitten/components";
 
 const EventCard = ({ event, onPress }) => {
+    const hasImage = event.image;
+
     return (
         <View style={styles.card}>
             <Card style={[styles.card, { borderColor: "transparent" }]}>
-                <Image
-                    source={
-                        typeof event.image === "number"
-                            ? event.image
-                            : { uri: event.image }
-                    }
-                    style={styles.image}
-                />
+                {hasImage && (
+                    <Image
+                        source={
+                            typeof event.image === "number"
+                                ? event.image
+                                : { uri: event.image }
+                        }
+                        style={styles.image}
+                    />
+                )}
+
                 <Text category="h4" style={styles.title}>
                     {event.title}
                 </Text>
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         backgroundColor: "transparent",
-        height: 600,
+        height: "auto",
         borderColor: "#EA383E",
         borderWidth: 3,
         borderRadius: 10,

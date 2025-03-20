@@ -6,10 +6,12 @@ import DetailsScreen from "./components/DetailsScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import SplashScreen from "./components/SplashScreen";
 import LoginScreen from "./components/LoginScreen";
+import AddEventScreen from "./components/AddEventScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
+import { EventProvider } from "./components/Events";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,6 +25,7 @@ const HomeStack = () => {
                 component={DetailsScreen}
                 options={{ title: "Event Details" }}
             />
+            <Stack.Screen name="Add" component={AddEventScreen} />
         </Stack.Navigator>
     );
 };
@@ -36,6 +39,16 @@ const MainTabNavigator = () => {
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <MaterialIcons name="home" size={size} color={color} />
+                    ),
+                }}
+            />
+
+            <Tab.Screen
+                name="Add Event"
+                component={AddEventScreen}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialIcons name="add" size={size} color={color} />
                     ),
                 }}
             />
@@ -81,10 +94,12 @@ const AppNavigator = () => {
 
 export default function App() {
     return (
-        <ApplicationProvider {...eva} theme={eva.light}>
-            <NavigationContainer>
-                <AppNavigator />
-            </NavigationContainer>
-        </ApplicationProvider>
+        <EventProvider>
+            <ApplicationProvider {...eva} theme={eva.light}>
+                <NavigationContainer>
+                    <AppNavigator />
+                </NavigationContainer>
+            </ApplicationProvider>
+        </EventProvider>
     );
 }

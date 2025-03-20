@@ -1,83 +1,30 @@
 import React from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
-import { Text } from "@ui-kitten/components";
+import { Text, Button } from "@ui-kitten/components";
 import EventCard from "./EventCard";
-
-const eventData = {
-    volunteering: [
-        {
-            id: "1",
-            title: "Community Clean-Up",
-            clubName: "Green Volunteers",
-            date: "2025-03-15 (Saturday)",
-            time: "10:00 AM",
-            location: "Main Campus",
-            image: require("../images/12.png"),
-        },
-        {
-            id: "2",
-            title: "Food Drive",
-            clubName: "Helping Hands",
-            date: "2025-03-16 (Sunday)",
-            time: "2:00 PM",
-            location: "Student Center",
-            image: require("../images/16.png"),
-        },
-    ],
-    clubs: [
-        {
-            id: "3",
-            title: "Tech Talk",
-            clubName: "GDG On Campus HTU",
-            date: "2025-03-17 (Monday)",
-            time: "4:00 PM",
-            location: "Tech Building",
-            image: require("../images/3.png"),
-        },
-        {
-            id: "4",
-            title: "Art Workshop",
-            clubName: "Creative Minds",
-            date: "2025-03-18 (Tuesday)",
-            time: "6:00 PM",
-            location: "Art Studio",
-            image: require("../images/36.png"),
-        },
-    ],
-    htuEvents: [
-        {
-            id: "5",
-            title: "University Fair",
-            clubName: "HTU Organizers",
-            date: "2025-03-19 (Wednesday)",
-            time: "1:00 PM",
-            location: "Auditorium",
-            image: require("../images/32.png"),
-        },
-        {
-            id: "6",
-            title: "Open House",
-            clubName: "HTU Events",
-            date: "2025-03-20 (Thursday)",
-            time: "3:00 PM",
-            location: "Main Campus",
-            image: require("../images/7.png"),
-        },
-    ],
-};
+import { useEvents } from "./Events";
 
 const HomeScreen = ({ navigation }) => {
+    const { events } = useEvents();
+
     return (
         <ScrollView style={styles.container}>
+            <Button
+                onPress={() => navigation.navigate("Add")}
+                status="success"
+                style={{ marginTop: 40 }}
+            >
+                Add Event
+            </Button>
+
             <View style={styles.container}>
                 <Text category="h1" style={styles.header}>
                     Volunteering
                 </Text>
-                {eventData.volunteering.map((event) => (
+                {events.volunteering.map((event) => (
                     <EventCard
                         key={event.id}
                         event={event}
-                        navigator={navigation}
                         onPress={() =>
                             navigation.navigate("Details", {
                                 event,
@@ -87,15 +34,15 @@ const HomeScreen = ({ navigation }) => {
                     />
                 ))}
             </View>
+
             <View style={styles.container}>
                 <Text category="h1" style={styles.header}>
                     Clubs
                 </Text>
-                {eventData.clubs.map((event) => (
+                {events.clubs.map((event) => (
                     <EventCard
                         key={event.id}
                         event={event}
-                        navigator={navigation}
                         onPress={() =>
                             navigation.navigate("Details", {
                                 event,
@@ -105,15 +52,15 @@ const HomeScreen = ({ navigation }) => {
                     />
                 ))}
             </View>
+
             <View style={styles.container}>
                 <Text category="h1" style={styles.header}>
                     HTU Events
                 </Text>
-                {eventData.htuEvents.map((event) => (
+                {events.htuEvents.map((event) => (
                     <EventCard
                         key={event.id}
                         event={event}
-                        navigator={navigation}
                         onPress={() =>
                             navigation.navigate("Details", {
                                 event,
