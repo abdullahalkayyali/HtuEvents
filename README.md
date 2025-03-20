@@ -1,6 +1,6 @@
 # HTU Events
 
-A demo app to show ongoing events at HTU
+__A demo app to show ongoing events at HTU__
 
 When loading up the app you will be presented with a login page. There are 3 users. For now you can use "user" for the email and "123" for the password.
 > The other 2 users provide no additional functionality
