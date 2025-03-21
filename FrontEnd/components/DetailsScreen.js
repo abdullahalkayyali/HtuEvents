@@ -60,8 +60,7 @@ const DetailsScreen = ({ navigation, route }) => {
                     style={styles.rsvpButton}
                     onPress={() => {
                         setRsvps(rsvps + 1);
-                        Al;
-                        ert.alert("RSVP Submitted!");
+                        Alert.alert("RSVP Submitted!");
                     }}
                 >
                     <Text style={styles.buttonText}>RSVP</Text>
