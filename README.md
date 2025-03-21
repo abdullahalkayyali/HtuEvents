@@ -2,8 +2,8 @@
 
 __A demo app to show ongoing events at HTU__
 
-When loading up the app you will be presented with a login page. There are 3 users. For now you can use "user" for the email and "123" for the password.
-> The other 2 users provide no additional functionality
+When loading up the app you will be presented with a login page. There are 2 users. For now you can use "f" for the email and "f" for the password.
+> The other user provide no additional functionality
 
 
 You will then be shown all current events happening at HTU, you can tap the "View Details" button on each card to view more information
