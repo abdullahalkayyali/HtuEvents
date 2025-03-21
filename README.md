@@ -14,5 +14,5 @@ To view your profile tap the icon on the bottom
 
 ## Notes
 Most of the UI is done with the [UI-Kitten Framework](https://akveo.github.io/react-native-ui-kitten/)\
-Unfortunately the Backend Folder is empty since I couldn't get react native to establish a connection with my express server 😢 
+Unfortunately the Backend Folder is empty since I couldn't get react native to establish a connection with my express server 😢 \
 The images used for each card are not accurate to the event, since I didn't have their posters.
